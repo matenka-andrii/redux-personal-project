@@ -1,0 +1,61 @@
+.task {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 61px;
+    margin-bottom: 13px;
+    padding: 0 20px;
+    background-color: var(--paletteColor2);
+    border-radius: 5px;
+    box-shadow: 6px 6px 14px var(--rgbaColor1);
+    font-size: 20px;
+    font-weight: 400;
+
+    & svg {
+        cursor: pointer;
+    }
+
+    & .content {
+        display: flex;
+        align-items: center;
+        width: 85%;
+
+        & .complete {
+            margin-right: 20px;
+        }
+
+        & span {
+            display: flex;
+            align-items: center;
+            margin-right: 1.9rem;
+        }
+
+        & input[type='text'] {
+            width: 100%;
+            border-color: transparent;
+
+            &:not([disabled]) {
+                border-color: var(--paletteColor3);
+            }
+        }
+    }
+
+    & .actions {
+        & .setPriority,
+        & .edit {
+            margin-right: 20px;
+        }
+    }
+}
+
+.completed {
+    background-color: var(--paletteColor8);
+    color: var(--paletteColor9);
+
+    & .content {
+        & input[type='text'] {
+            background-color: var(--paletteColor8);
+        }
+    }
+}

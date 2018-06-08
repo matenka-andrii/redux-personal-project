@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    outline: 0;
+
+    /**
+     * Пришлось применитть !important чтобы взять верх над стилями antd
+     */
+    font-family: roboto mono, roboto, system-ui;
+}
+
+body {
+    background-color: var(--paletteColor3);
+    font-family: roboto mono, roboto, system-ui;
+
+    /* Зачаровать шрифты */
+    font-smoothing: antialiased;
+    font-variant-ligatures: none;
+
+    /**
+     * Фикс для мобильного сафари, чтобы при поторотах он не склеивал, не терял контент.
+     * Префиксы установлены вручную, так как на момент 13.03.2018
+     * autoprefixer этого не делал автоматически.
+     */
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+    & section {
+        width: 100%;
+    }
+}

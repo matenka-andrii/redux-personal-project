@@ -1,0 +1,43 @@
+{
+    "runner": "jest-runner",
+    "displayName": "test:unit",
+    "rootDir": "../",
+    "verbose": false,
+    "notify": true,
+    "bail": false,
+    "collectCoverage": false,
+    "collectCoverageFrom": ["<rootDir>/source/**/*.js"],
+    "coveragePathIgnorePatterns": [
+        "/node_modules/",
+        "/build/",
+        "/coverage/",
+        "/styles/",
+        "<rootDir>/source/index.js",
+        "<rootDir>/source/init/middleware",
+        "<rootDir>/source/pages/index.js",
+        "<rootDir>/source/views/index.js",
+        "<rootDir>/source/components/index.js",
+        "<rootDir>/source/bus/intl/sagas/workers/index.js",
+        "<rootDir>/source/components/index.js"
+    ],
+    "coverageThreshold": {
+        "global": {
+            "branches": 1,
+            "functions": 1,
+            "lines": 1,
+            "statements": 1
+        }
+    },
+    "modulePaths": ["<rootDir>/source", "<rootDir>/node_modules"],
+    "moduleFileExtensions": ["js", "json", "css"],
+    "setupFiles": ["<rootDir>/jest/scripts/setupFiles.js"],
+    "setupTestFrameworkScriptFile":
+        "<rootDir>/jest/scripts/setupEnzymeEnvironment.js",
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "moduleNameMapper": {
+        "\\.(css|m.css)$": "identity-obj-proxy",
+        "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+            "<rootDir>/__mocks__/fileMock.js"
+    },
+    "testURL": "http://www.test.com"
+}
