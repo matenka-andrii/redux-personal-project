@@ -9,7 +9,7 @@
     background-color: var(--paletteColor2);
     border-radius: 5px;
     box-shadow: 6px 6px 14px var(--rgbaColor1);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
 
     & svg {
@@ -21,8 +21,13 @@
         align-items: center;
         width: 85%;
 
+        & p {
+            margin-left: 10px;
+            white-space: pre;
+        }
+
         & .complete {
-            margin-right: 20px;
+            margin-right: 16px;
         }
 
         & span {

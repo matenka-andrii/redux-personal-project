@@ -31,7 +31,7 @@ export function* callCompleteTasksWorker () {
 
         yield put(tasksActions.completeTasks(tasks));
     } catch (error) {
-        yield put(uiActions.emmitError(error, 'CompleteTasksWorker'));
+        yield put(uiActions.emmitError(error, 'completeTasksWorker'));
     } finally {
         yield put(uiActions.setTasksFetchingState(false));
     }

@@ -8,8 +8,6 @@ import { Control } from 'react-redux-form';
 // Instruments
 import Styles from './styles.m.css';
 import Checkbox from 'theme/assets/Checkbox';
-
-import { tasksActions } from 'bus/tasks/actions';
 import { tasksActionsAsync } from 'bus/tasks/saga/asyncActions';
 
 // Components
@@ -37,9 +35,9 @@ const sortTasks = (tasks) => {
 const mapStateToProps = (state) => {
     return {
         isTasksFetching: state.ui.get('isTasksFetching'),
-        tasks:           sortTasks(state.tasks),
-        searchKeyword:   state.forms.search.message,
         message:         state.forms.create.message,
+        searchKeyword:   state.forms.search.message,
+        tasks:           sortTasks(state.tasks),
     };
 };
 
@@ -49,10 +47,7 @@ const mapDispatchToProps = (dispatch) => {
             {
                 completeTasksAsync: tasksActionsAsync.completeTasksAsync,
                 createTaskAsync:    tasksActionsAsync.createTaskAsync,
-                deleteTaskAsync:    tasksActionsAsync.deleteTaskAsync,
                 fetchTasksAsync:    tasksActionsAsync.fetchTasksAsync,
-                updateTaskAsync:    tasksActionsAsync.updateTaskAsync,
-                updateTask:         tasksActions.updateTask,
             },
             dispatch,
         ),
@@ -68,6 +63,14 @@ export default class Scheduler extends Component {
     componentDidMount () {
         this.props.actions.fetchTasksAsync();
     }
+
+    _createTask = () => {
+        const { actions, message } = this.props;
+
+        if (message) {
+            actions.createTaskAsync(message);
+        }
+    };
 
     _checkAllDone = () => {
         const { tasks } = this.props;
@@ -86,21 +89,12 @@ export default class Scheduler extends Component {
         this._createTask();
     };
 
-    _createTask = () => {
-        const { actions, message } = this.props;
-
-        if (message) {
-            actions.createTaskAsync(message);
-        }
-    };
-
     render () {
-        const { actions, tasks, searchKeyword, isTasksFetching } = this.props;
+        const { tasks, searchKeyword, isTasksFetching } = this.props;
         const todoList = tasks
             .filter((task) => task.get('message').toLowerCase().match(searchKeyword.toLowerCase()))
             .map((task) => (
                 <Task
-                    actions = { actions }
                     completed = { task.get('completed') }
                     favorite = { task.get('favorite') }
                     id = { task.get('id') }
